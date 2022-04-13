@@ -1,8 +1,9 @@
 import os
 from flask import Flask
-from flask.templating import render_template
 from dotenv import load_dotenv
 from flask_mysqldb import MySQL
+from routes.index import AppRoutes
+from flask.templating import render_template
 
 load_dotenv()
 
@@ -17,13 +18,17 @@ app.config['MYSQL_PORT'] = os.getenv('MYSQL_PORT')
 
 database = MySQL(app)
 
-@app.route('/')
-def index():
-    return render_template('register.html')
+@app.route('/register')
+def register():
+    return render_template('intro/register-form.html')
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('intro/login-form.html')
+
+@app.route('/password_reset')
+def password_reset():
+    return render_template('intro/reset-password-form.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv('PORT'))
