@@ -20,15 +20,15 @@ database = MySQL(app)
 
 @app.route('/register')
 def register():
-    return render_template('intro/register-form.html')
+    return render_template('intro/register_form.html')
 
 @app.route('/login')
 def login():
-    return render_template('intro/login-form.html')
+    return render_template('intro/login_form.html')
 
 @app.route('/password_reset')
 def password_reset():
-    return render_template('intro/reset-password-form.html')
+    return render_template('intro/reset_password_form.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv('PORT'))
